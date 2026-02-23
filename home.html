@@ -121,22 +121,28 @@ button{
 <button onclick="logout()">ออกจากระบบ</button>
 
 <script>
-const users = {
-  "A": { message: "ขอบคุณที่อยู่ข้างกันเสมอ ❤️" },
-  "B": { message: "ดีใจที่มีเธอเป็นเพื่อน 🌸" },
-  "C": { message: "เธอคือความทรงจำดี ๆ ของเรา ✨" },
-  "Earn": { message: "กุว่าแล้วมึงต้องอ่าน" }
-};
-
 let currentUser = localStorage.getItem("currentUser");
 
-if(!currentUser || !users[currentUser]){
+if(!currentUser){
   window.location.href = "index.html";
 }
 
-let fullText = users[currentUser].message;
+let fullText = "";
 let i = 0;
 let opened = false;
+
+async function loadMessage(){
+  const response = await fetch("text.json");
+  const users = await response.json();
+
+  if(users[currentUser]){
+    fullText = users[currentUser].message;
+  }else{
+    window.location.href = "index.html";
+  }
+}
+
+loadMessage();
 
 function openLetter(){
   if(opened) return;

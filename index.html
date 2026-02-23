@@ -33,9 +33,9 @@ button{
 
 <div class="box">
 <h2>Secret Login</h2>
-<input type="text" id="username" placeholder="ชื่อ">
+<input type="text" id="username" placeholder="username">
 <br>
-<input type="password" id="password" placeholder="รหัสผ่าน">
+<input type="password" id="password" placeholder="password">
 <br>
 <button onclick="login()">เข้าสู่ระบบ</button>
 <p id="error"></p>
@@ -43,10 +43,10 @@ button{
 
 <script>
 const users = {
-  "A": { password: "111", message: "ขอบคุณที่อยู่ข้างกันเสมอ ❤️" },
-  "B": { password: "222", message: "ดีใจที่มีเธอเป็นเพื่อน 🌸" },
-  "C": { password: "333", message: "เธอคือความทรงจำดี ๆ ของเรา ✨" },
-  "Earn": { password: "131050", message: "กุว่าแล้วมึงต้องอ่าน" }
+  "A": { password: "111" },
+  "B": { password: "222" },
+  "C": { password: "333" },
+  "Earn": { password: "131050" }
 };	
 
 function login(){
@@ -57,7 +57,7 @@ function login(){
     localStorage.setItem("currentUser", name);
     window.location.href = "home.html";
   }else{
-    document.getElementById("error").innerHTML = "ชื่อหรือรหัสผ่านผิด";
+    document.getElementById("error").innerHTML = "ผิดใส่ใหม่นะน้องนะ";
   }
 }
 </script>
